@@ -15,7 +15,7 @@ public class Main {
 		Injector injector = Guice.createInjector(
 				new ConfigModule(new File(args[0]), ExampleConfig.class),
 				new LoggingModule(),
-				new WebModule(),
+				new WebModule("com.example.app"),
 				//new HibernateModule(),
 				new ExampleAppModule());
 
