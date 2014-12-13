@@ -1,0 +1,12 @@
+
+web:
+  port: 8081
+
+foo: bar
+
+db:
+  driverClass: org.postgresql.Driver
+  user: foo
+  url: jdbc:postgresql://localhost:5432/postgres/
+  properties:
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
