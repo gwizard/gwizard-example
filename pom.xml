@@ -38,7 +38,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.voodoodyne.gwizard</groupId>
-			<artifactId>gwizard-web</artifactId>
+			<artifactId>gwizard-rest</artifactId>
 			<version>${gwizard.version}</version>
 		</dependency>
 		<dependency>

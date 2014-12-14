@@ -7,6 +7,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -17,10 +18,12 @@ import javax.ws.rs.core.MediaType;
 public class FunResource {
 
 	private final ExampleConfig cfg;
+	private final HttpHeaders headers;
 
 	@Inject
-	public FunResource(ExampleConfig cfg) {
+	public FunResource(ExampleConfig cfg, HttpHeaders headers) {
 		this.cfg = cfg;
+		this.headers = headers;
 	}
 
 	@Data
@@ -31,5 +34,11 @@ public class FunResource {
 	@GET
 	public Stuff stuff() {
 		return new Stuff(cfg.getFoo());
+	}
+
+	@GET
+	@Path("/headers")
+	public HttpHeaders headers() {
+		return headers;
 	}
 }
