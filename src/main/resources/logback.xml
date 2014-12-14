@@ -11,6 +11,7 @@
     </appender>
 
     <!--<logger name="org.glassfish.jersey" level="trace"/>-->
+    <logger name="org.hibernate" level="debug"/>
 
     <logger name="com.example.app" level="trace"/>
 

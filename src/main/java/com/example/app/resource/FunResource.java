@@ -1,6 +1,6 @@
-package com.example.app;
+package com.example.app.resource;
 
-import com.google.inject.persist.Transactional;
+import com.example.app.ExampleConfig;
 import lombok.Data;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -14,12 +14,12 @@ import javax.ws.rs.core.MediaType;
 @Path("/fun")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ExampleResource {
+public class FunResource {
 
 	private final ExampleConfig cfg;
 
 	@Inject
-	public ExampleResource(ExampleConfig cfg) {
+	public FunResource(ExampleConfig cfg) {
 		this.cfg = cfg;
 	}
 
@@ -30,14 +30,6 @@ public class ExampleResource {
 
 	@GET
 	public Stuff stuff() {
-		return new Stuff(cfg.getFoo());
-	}
-
-	@GET
-	@Path("txn")
-	@Transactional
-	public Stuff txn() {
-		EM.em().clear();
 		return new Stuff(cfg.getFoo());
 	}
 }

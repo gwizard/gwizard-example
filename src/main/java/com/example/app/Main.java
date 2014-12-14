@@ -3,6 +3,7 @@ package com.example.app;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.voodoodyne.gwizard.config.ConfigModule;
+import com.voodoodyne.gwizard.hibernate.HibernateModule;
 import com.voodoodyne.gwizard.logging.LoggingModule;
 import com.voodoodyne.gwizard.web.WebModule;
 import com.voodoodyne.gwizard.web.WebServer;
@@ -16,7 +17,7 @@ public class Main {
 				new ConfigModule(new File(args[0]), ExampleConfig.class),
 				new LoggingModule(),
 				new WebModule("com.example.app"),
-				//new HibernateModule(),
+				new HibernateModule(),
 				new ExampleAppModule());
 
 		injector.getInstance(WebServer.class).start();

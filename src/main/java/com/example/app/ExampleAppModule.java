@@ -1,5 +1,6 @@
 package com.example.app;
 
+import com.example.app.resource.ThingsResource;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
@@ -12,7 +13,7 @@ import javax.inject.Singleton;
 public class ExampleAppModule extends AbstractModule {
 	@Override
 	protected void configure() {
-		//requestStaticInjection(EM.class);
+		bind(ThingsResource.class);
 	}
 
 	@Provides
