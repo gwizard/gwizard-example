@@ -20,6 +20,6 @@ public class Main {
 				new RestModule(),
 				new HibernateModule());
 
-		injector.getInstance(WebServer.class).start();
+		injector.getInstance(WebServer.class).startJoin();
 	}
 }
