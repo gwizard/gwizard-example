@@ -14,7 +14,7 @@ import java.io.File;
 public class Main {
 	public static void main(String[] args) throws Exception {
 		Injector injector = Guice.createInjector(
-				new ExampleAppModule(),
+				new ExampleModule(),
 				new ConfigModule(new File(args[0]), ExampleConfig.class),
 				new LoggingModule(),
 				new RestModule(),

@@ -14,7 +14,7 @@ import javax.inject.Singleton;
  * Among the duties of your application module(s), you must explicitly bind every JAXRS resource class.
  * Consider using Reflections to do this automatically.
  */
-public class ExampleAppModule extends AbstractModule {
+public class ExampleModule extends AbstractModule {
 	@Override
 	protected void configure() {
 		bind(FunResource.class);
