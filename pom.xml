@@ -13,6 +13,7 @@
 	</properties>
 
 	<dependencies>
+		<!-- If you aren't using lombok, you're really missing out. Be sure to install the IDE plugin. -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -20,12 +21,20 @@
 			<scope>provided</scope> <!-- only needed at build time -->
 		</dependency>
 
+		<!-- You probably don't use this in your production apps, but it makes a great demo -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.182</version>
 		</dependency>
 
+		<!--
+		You may be asking yourself, how did I get here? And which of these jars do I need?
+
+		Almost certainly you want gwizard-config and gwizard-logging. If you are building
+		REST services, you want gwizard-rest (or gwizard-web if you don't want JAXRS).
+		gwizard-hibernate is strictly for the masochistic.
+		-->
 		<dependency>
 			<groupId>com.voodoodyne.gwizard</groupId>
 			<artifactId>gwizard-config</artifactId>
