@@ -5,7 +5,7 @@ import com.example.app.resource.ThingsResource;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import com.voodoodyne.gwizard.hibernate.DbConfig;
+import com.voodoodyne.gwizard.hibernate.DatabaseConfig;
 import com.voodoodyne.gwizard.logging.LoggingConfig;
 import com.voodoodyne.gwizard.web.WebConfig;
 import javax.inject.Singleton;
@@ -38,7 +38,7 @@ public class ExampleAppModule extends AbstractModule {
 	}
 
 	@Provides
-	public DbConfig dbConfig(ExampleConfig cfg) {
-		return cfg.getDb();
+	public DatabaseConfig databaseConfig(ExampleConfig cfg) {
+		return cfg.getDatabase();
 	}
 }
