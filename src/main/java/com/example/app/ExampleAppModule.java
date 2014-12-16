@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.voodoodyne.gwizard.hibernate.DbConfig;
+import com.voodoodyne.gwizard.logging.LoggingConfig;
 import com.voodoodyne.gwizard.web.WebConfig;
 import javax.inject.Singleton;
 
@@ -27,6 +28,10 @@ public class ExampleAppModule extends AbstractModule {
 		return mapper;
 	}
 
+	@Provides
+	public LoggingConfig loggingConfig(ExampleConfig cfg) {
+		return cfg.getLogging();
+	}
 	@Provides
 	public WebConfig webConfig(ExampleConfig cfg) {
 		return cfg.getWeb();
