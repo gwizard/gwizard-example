@@ -13,6 +13,7 @@ import java.util.List;
 import static com.voodoodyne.gwizard.hibernate.EM.em;
 
 /**
+ * At least this resource is named appropriately.
  */
 @Path("/things")
 @Produces(MediaType.APPLICATION_JSON)
@@ -20,7 +21,6 @@ import static com.voodoodyne.gwizard.hibernate.EM.em;
 public class ThingsResource {
 	private static int count = 0;
 
-	/** Make one thing */
 	@POST
 	@Transactional
 	public Thing makeThing() {

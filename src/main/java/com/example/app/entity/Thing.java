@@ -16,7 +16,8 @@ public class Thing {
 
 	/**
 	 * PSA: It's good practice to initialize ids immediately, that way you never have unidentifiable
-	 * entities floating around which screw up Sets and other identity-based collections.
+	 * entities floating around which screw up Sets and other identity-based collections. Sequences,
+	 * identity columns, and other db-centric id generation strategies are a bad idea.
 	 */
 	@Id
 	private UUID id = UUID.randomUUID();

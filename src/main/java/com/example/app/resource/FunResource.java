@@ -11,6 +11,7 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 
 /**
+ * This resource really isn't very fun.
  */
 @Path("/fun")
 @Produces(MediaType.APPLICATION_JSON)

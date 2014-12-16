@@ -10,9 +10,15 @@ import com.voodoodyne.gwizard.web.WebServer;
 import java.io.File;
 
 /**
+ * Set up the injector and start the web server. Easy.
  */
 public class Main {
 	public static void main(String[] args) throws Exception {
+		if (args.length < 1) {
+			System.err.println("First argument needs to be a yaml config file, doofus");
+			return;
+		}
+
 		Injector injector = Guice.createInjector(
 				new ExampleModule(),
 				new ConfigModule(new File(args[0]), ExampleConfig.class),

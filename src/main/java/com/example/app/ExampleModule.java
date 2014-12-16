@@ -2,6 +2,7 @@ package com.example.app;
 
 import com.example.app.resource.FunResource;
 import com.example.app.resource.ThingsResource;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
@@ -11,8 +12,11 @@ import com.voodoodyne.gwizard.web.WebConfig;
 import javax.inject.Singleton;
 
 /**
- * Among the duties of your application module(s), you must explicitly bind every JAXRS resource class.
- * Consider using Reflections to do this automatically.
+ * <p>Among the duties of your application module(s), you must explicitly bind every JAXRS resource class.
+ * Consider using Reflections to do this automatically.</p>
+ *
+ * <p>We must provide bindings for the LoggingConfig, WebConfig, and DatabaseConfig to use the
+ * logging, rest, and hibernate modules.</p>
  */
 public class ExampleModule extends AbstractModule {
 	@Override
@@ -21,17 +25,18 @@ public class ExampleModule extends AbstractModule {
 		bind(ThingsResource.class);
 	}
 
+	/** This objectmapper will get used for RESTEasy's JSON responses */
 	@Provides
 	@Singleton
 	public ObjectMapper objectMapper() {
-		ObjectMapper mapper = new ObjectMapper();
-		return mapper;
+		return new ObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 	}
 
 	@Provides
 	public LoggingConfig loggingConfig(ExampleConfig cfg) {
 		return cfg.getLogging();
 	}
+
 	@Provides
 	public WebConfig webConfig(ExampleConfig cfg) {
 		return cfg.getWeb();
