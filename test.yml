@@ -1,4 +1,10 @@
 # This configuration file is mapped to the ExampleConfig class.
+#
+# We put the logback XML config in here as an example. You also have the option
+# of using the standard logback bootstrap (ie, logback.xml on classpath) and
+# then put logger level overrides in here. However, you'll need the XML here
+# if you want to, say, use different appenders for staging vs production vs dev.
+#
 
 foo: bar
 
@@ -14,6 +20,9 @@ database:
     hibernate.hbm2ddl.auto: create
 
 logging:
+  loggers:
+    "com.example.app": TRACE
+
   xml: |
     <configuration>
         <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
@@ -23,7 +32,6 @@ logging:
         </appender>
 
         <logger name="org.hibernate" level="info"/>
-        <logger name="com.example.app" level="trace"/>
 
         <root level="info">
             <appender-ref ref="console"/>

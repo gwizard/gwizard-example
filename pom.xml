@@ -9,7 +9,7 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
-		<gwizard.version>1.0-SNAPSHOT</gwizard.version>
+		<gwizard.version>0.2-SNAPSHOT</gwizard.version>
 	</properties>
 
 	<dependencies>
