@@ -7,9 +7,11 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.UUID;
 import static com.voodoodyne.gwizard.hibernate.EM.em;
 
 /**
@@ -23,7 +25,7 @@ public class ThingsResource {
 
 	@POST
 	@Transactional
-	public Thing makeThing() {
+	public Thing create() {
 		final Thing thing = new Thing("thing " + count++);
 		em().persist(thing);
 		return thing;
@@ -36,5 +38,12 @@ public class ThingsResource {
 		final CriteriaQuery<Thing> query = em().getCriteriaBuilder().createQuery(Thing.class);
 		query.select(query.from(Thing.class));
 		return em().createQuery(query).getResultList();
+	}
+
+	@GET
+	@Transactional
+	@Path("{thingId}")
+	public Thing get(@PathParam("thingId") UUID thingId) {
+		return em().find(Thing.class, thingId);
 	}
 }
