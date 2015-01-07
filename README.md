@@ -12,7 +12,9 @@ $ mvn install
 $ java -jar target/gwizard-example-1.0-SNAPSHOT.jar test.yml
 ```
 
-The most interesting endpoint is probably: http://localhost:8081/fun/headers
+The most exciting endpoint is probably: http://localhost:8081/fun/headers
+
+(Note that test.yml changes the port from the default of 8080)
 
 ## GWizard
 
