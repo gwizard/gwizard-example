@@ -1,11 +1,16 @@
 package com.example.app;
 
+import com.example.app.services.ExampleService;
+import com.example.app.services.ServiceFailureHandler;
 import com.example.app.resource.FunResource;
 import com.example.app.resource.ThingsResource;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.util.concurrent.Service;
+import com.google.common.util.concurrent.ServiceManager;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
+import com.google.inject.multibindings.Multibinder;
 import com.voodoodyne.gwizard.hibernate.DatabaseConfig;
 import com.voodoodyne.gwizard.logging.LoggingConfig;
 import com.voodoodyne.gwizard.web.WebConfig;
@@ -23,6 +28,13 @@ public class ExampleModule extends AbstractModule {
 	protected void configure() {
 		bind(FunResource.class);
 		bind(ThingsResource.class);
+                
+                bind(AppShutdownHandler.class).asEagerSingleton();
+                Multibinder.newSetBinder(binder(), ServiceManager.Listener.class)
+                        .addBinding().to(ServiceFailureHandler.class);
+                
+                Multibinder.newSetBinder(binder(), Service.class)
+                        .addBinding().to(ExampleService.class);
 	}
 
 	/** This objectmapper will get used for RESTEasy's JSON responses */

@@ -1,13 +1,16 @@
 package com.example.app;
 
+import com.google.common.util.concurrent.ServiceManager;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.voodoodyne.gwizard.config.ConfigModule;
 import com.voodoodyne.gwizard.hibernate.HibernateModule;
 import com.voodoodyne.gwizard.logging.LoggingModule;
 import com.voodoodyne.gwizard.rest.RestModule;
+import com.voodoodyne.gwizard.services.ServicesModule;
 import com.voodoodyne.gwizard.web.WebServer;
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Set up the injector and start the web server. Easy.
@@ -24,7 +27,10 @@ public class Main {
 				new ConfigModule(new File(args[0]), ExampleConfig.class),
 				new LoggingModule(),
 				new RestModule(),
-				new HibernateModule());
+				new HibernateModule(),
+                                new ServicesModule());
+                
+                injector.getInstance(ServiceManager.class).startAsync();//.awaitHealthy(5, TimeUnit.SECONDS);
 
 		injector.getInstance(WebServer.class).startJoin();
 	}
