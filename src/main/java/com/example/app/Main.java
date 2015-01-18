@@ -6,6 +6,7 @@ import com.google.inject.Injector;
 import com.voodoodyne.gwizard.config.ConfigModule;
 import com.voodoodyne.gwizard.hibernate.HibernateModule;
 import com.voodoodyne.gwizard.logging.LoggingModule;
+import com.voodoodyne.gwizard.metrics.MetricsModule;
 import com.voodoodyne.gwizard.rest.RestModule;
 import com.voodoodyne.gwizard.services.ServicesModule;
 
@@ -28,7 +29,9 @@ public class Main {
 				new LoggingModule(),
 				new RestModule(),
 				new HibernateModule(),
-                                new ServicesModule());
+                                new ServicesModule(),
+                                new MetricsModule()
+                        );
 
                 // start service manager (which will launch web service)
                 injector.getInstance(ServiceManager.class)
