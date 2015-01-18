@@ -8,14 +8,14 @@ import com.voodoodyne.gwizard.hibernate.HibernateModule;
 import com.voodoodyne.gwizard.logging.LoggingModule;
 import com.voodoodyne.gwizard.rest.RestModule;
 import com.voodoodyne.gwizard.services.ServicesModule;
-import com.voodoodyne.gwizard.web.WebServer;
+
 import java.io.File;
-import java.util.concurrent.TimeUnit;
 
 /**
- * Set up the injector and start the web server. Easy.
+ * Set up the injector and start the service manager.
  */
 public class Main {
+    public static int DEFAULT_SERVICE_STARTUP_TIMEOUT = 5;
 	public static void main(String[] args) throws Exception {
 		if (args.length < 1) {
 			System.err.println("First argument needs to be a yaml config file, doofus");
@@ -29,9 +29,11 @@ public class Main {
 				new RestModule(),
 				new HibernateModule(),
                                 new ServicesModule());
-                
-                injector.getInstance(ServiceManager.class).startAsync();//.awaitHealthy(5, TimeUnit.SECONDS);
 
-		injector.getInstance(WebServer.class).startJoin();
+                // start service manager (which will launch web service)
+                injector.getInstance(ServiceManager.class)
+                        .startAsync()
+                        .awaitHealthy();
+
 	}
 }
