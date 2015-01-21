@@ -1,5 +1,6 @@
 package com.example.app.resource;
 
+import com.codahale.metrics.annotation.Timed;
 import com.example.app.ExampleConfig;
 import lombok.Data;
 import javax.inject.Inject;
@@ -37,6 +38,7 @@ public class FunResource {
 		return new Stuff(cfg.getFoo());
 	}
 
+        @Timed
 	@GET
 	@Path("/headers")
 	public HttpHeaders headers() {

@@ -1,5 +1,6 @@
 package com.example.app.resource;
 
+import com.codahale.metrics.annotation.Timed;
 import com.example.app.entity.Thing;
 import com.google.inject.persist.Transactional;
 import javax.persistence.criteria.CriteriaQuery;
@@ -31,6 +32,7 @@ public class ThingsResource {
 		return thing;
 	}
 
+        @Timed
 	@GET
 	@Transactional
 	public List<Thing> list() {
@@ -40,6 +42,7 @@ public class ThingsResource {
 		return em().createQuery(query).getResultList();
 	}
 
+        @Timed
 	@GET
 	@Transactional
 	@Path("{thingId}")
