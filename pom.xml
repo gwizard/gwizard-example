@@ -55,16 +55,11 @@
 			<artifactId>gwizard-hibernate</artifactId>
 			<version>${gwizard.version}</version>
 		</dependency>
-        <dependency>
-            <groupId>com.voodoodyne.gwizard</groupId>
-            <artifactId>gwizard-services</artifactId>
-            <version>${gwizard.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.voodoodyne.gwizard</groupId>
-            <artifactId>gwizard-metrics</artifactId>
-            <version>${gwizard.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>com.voodoodyne.gwizard</groupId>
+			<artifactId>gwizard-metrics</artifactId>
+			<version>${gwizard.version}</version>
+		</dependency>
 
 		<!-- This example uses TestNG, but the JUnit code looks almost identical -->
 		<dependency>

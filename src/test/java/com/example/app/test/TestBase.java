@@ -7,7 +7,6 @@ import com.google.inject.Module;
 import com.google.inject.util.Modules;
 import com.voodoodyne.gwizard.hibernate.HibernateModule;
 import com.voodoodyne.gwizard.logging.LoggingModule;
-import com.voodoodyne.gwizard.services.ServicesModule;
 import lombok.extern.slf4j.Slf4j;
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeMethod;
@@ -30,7 +29,6 @@ public class TestBase {
 				Modules.override(
 					new LoggingModule(),
 					new HibernateModule(),
-                                        new ServicesModule(),
 					new ExampleModule(),
 					new TestModule())
 						.with(overrideModule()));

@@ -22,6 +22,7 @@ database:
 logging:
   loggers:
     "com.example.app": TRACE
+    "com.voodoodyne.gwizard": DEBUG
 
   xml: |
     <configuration>

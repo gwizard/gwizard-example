@@ -5,14 +5,11 @@ import com.example.app.resource.ThingsResource;
 import com.example.app.services.ExampleService;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.util.concurrent.Service;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import com.google.inject.multibindings.Multibinder;
 import com.voodoodyne.gwizard.hibernate.DatabaseConfig;
 import com.voodoodyne.gwizard.logging.LoggingConfig;
 import com.voodoodyne.gwizard.web.WebConfig;
-
 import javax.inject.Singleton;
 
 /**
@@ -27,9 +24,8 @@ public class ExampleModule extends AbstractModule {
 	protected void configure() {
 		bind(FunResource.class);
 		bind(ThingsResource.class);
-                
-                Multibinder.newSetBinder(binder(), Service.class)
-                        .addBinding().to(ExampleService.class);
+
+		bind(ExampleService.class).asEagerSingleton();
 	}
 
 	/** This objectmapper will get used for RESTEasy's JSON responses */
