@@ -52,6 +52,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.gwizard</groupId>
+			<artifactId>gwizard-services</artifactId>
+			<version>${gwizard.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gwizard</groupId>
 			<artifactId>gwizard-hibernate</artifactId>
 			<version>${gwizard.version}</version>
 		</dependency>
