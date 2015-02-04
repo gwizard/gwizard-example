@@ -1,9 +1,10 @@
 package com.example.app;
 
-import com.voodoodyne.gwizard.hibernate.DatabaseConfig;
-import com.voodoodyne.gwizard.logging.LoggingConfig;
-import com.voodoodyne.gwizard.web.WebConfig;
 import lombok.Data;
+import org.gwizard.healthchecks.HealthChecksConfig;
+import org.gwizard.hibernate.DatabaseConfig;
+import org.gwizard.logging.LoggingConfig;
+import org.gwizard.web.WebConfig;
 
 /**
  * Your configuration class can be any POJO, and there's nothing special about
@@ -21,4 +22,5 @@ public class ExampleConfig {
 	private LoggingConfig logging = new LoggingConfig();
 	private WebConfig web = new WebConfig();
 	private DatabaseConfig database = new DatabaseConfig();
+	private HealthChecksConfig healthChecks = new HealthChecksConfig();
 }

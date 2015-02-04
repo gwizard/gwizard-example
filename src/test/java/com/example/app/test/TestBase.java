@@ -5,9 +5,9 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.util.Modules;
-import com.voodoodyne.gwizard.hibernate.HibernateModule;
-import com.voodoodyne.gwizard.logging.LoggingModule;
 import lombok.extern.slf4j.Slf4j;
+import org.gwizard.hibernate.HibernateModule;
+import org.gwizard.logging.LoggingModule;
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeMethod;
 

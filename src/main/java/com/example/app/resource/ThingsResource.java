@@ -13,7 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.UUID;
-import static com.voodoodyne.gwizard.hibernate.EM.em;
+import static org.gwizard.hibernate.EM.em;
 
 /**
  * At least this resource is named appropriately.

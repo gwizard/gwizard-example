@@ -7,9 +7,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import com.voodoodyne.gwizard.hibernate.DatabaseConfig;
-import com.voodoodyne.gwizard.logging.LoggingConfig;
-import com.voodoodyne.gwizard.web.WebConfig;
+import org.gwizard.hibernate.DatabaseConfig;
+import org.gwizard.logging.LoggingConfig;
+import org.gwizard.web.WebConfig;
 import javax.inject.Singleton;
 
 /**

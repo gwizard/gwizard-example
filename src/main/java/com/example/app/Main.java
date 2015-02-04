@@ -2,12 +2,13 @@ package com.example.app;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.voodoodyne.gwizard.config.ConfigModule;
-import com.voodoodyne.gwizard.hibernate.HibernateModule;
-import com.voodoodyne.gwizard.logging.LoggingModule;
-import com.voodoodyne.gwizard.metrics.MetricsModule;
-import com.voodoodyne.gwizard.rest.RestModule;
-import com.voodoodyne.gwizard.services.Run;
+import org.gwizard.config.ConfigModule;
+import org.gwizard.healthchecks.HealthChecksModule;
+import org.gwizard.hibernate.HibernateModule;
+import org.gwizard.logging.LoggingModule;
+import org.gwizard.metrics.MetricsModule;
+import org.gwizard.rest.RestModule;
+import org.gwizard.services.Run;
 import java.io.File;
 
 /**
@@ -27,7 +28,8 @@ public class Main {
 				new LoggingModule(),
 				new RestModule(),
 				new HibernateModule(),
-				new MetricsModule());
+				new MetricsModule(),
+				new HealthChecksModule());
 
 		injector.getInstance(Run.class).start();
 	}

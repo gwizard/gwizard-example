@@ -1,8 +1,8 @@
 package com.example.app.services;
 
 import com.google.common.util.concurrent.AbstractIdleService;
-import com.voodoodyne.gwizard.services.Services;
 import lombok.extern.slf4j.Slf4j;
+import org.gwizard.services.Services;
 import javax.inject.Inject;
 
 /**
