@@ -9,7 +9,7 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
-		<gwizard.version>0.5</gwizard.version>
+		<gwizard.version>0.6</gwizard.version>
 	</properties>
 
 	<dependencies>
@@ -29,7 +29,7 @@
 		</dependency>
 
 		<!--
-		You may be asking yourself, how did I get here? And which of these jars do I need?
+		You may ask yourself, how did I get here? And which of these jars do I need?
 
 		Almost certainly you want gwizard-config and gwizard-logging. If you are building
 		REST services, you want gwizard-rest (or gwizard-web if you don't want JAXRS).
