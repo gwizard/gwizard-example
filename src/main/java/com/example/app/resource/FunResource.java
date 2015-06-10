@@ -38,7 +38,7 @@ public class FunResource {
 		return new Stuff(cfg.getFoo());
 	}
 
-        @Timed
+	@Timed
 	@GET
 	@Path("/headers")
 	public HttpHeaders headers() {
