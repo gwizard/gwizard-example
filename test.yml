@@ -4,6 +4,7 @@
 # of using the standard logback bootstrap (ie, logback.xml on classpath) and
 # then put logger level overrides in here. However, you'll need the XML here
 # if you want to, say, use different appenders for staging vs production vs dev.
+# Also, 'logggers' yaml overrides any logger configs in the XML.
 #
 
 foo: bar
