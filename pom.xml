@@ -9,7 +9,8 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
-		<gwizard.version>0.6</gwizard.version>
+		<gwizard.version>0.7-SNAPSHOT</gwizard.version>
+		<dropwizard.version>0.8.1</dropwizard.version>
 	</properties>
 
 	<dependencies>
@@ -17,7 +18,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.14.8</version>
+			<version>1.16.4</version>
 			<scope>provided</scope> <!-- only needed at build time -->
 		</dependency>
 
@@ -70,6 +71,11 @@
 			<artifactId>gwizard-healthchecks</artifactId>
 			<version>${gwizard.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-jackson</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
 
 		<!-- This example uses TestNG, but the JUnit code looks almost identical -->
 		<dependency>

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
+import io.dropwizard.jackson.Jackson;
 import org.gwizard.hibernate.DatabaseConfig;
 import org.gwizard.logging.LoggingConfig;
 import org.gwizard.web.WebConfig;
@@ -32,7 +33,7 @@ public class ExampleModule extends AbstractModule {
 	@Provides
 	@Singleton
 	public ObjectMapper objectMapper() {
-		return new ObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+		return Jackson.newObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 	}
 
 	@Provides
