@@ -1,5 +1,12 @@
 package com.example.app;
 
+import javax.inject.Singleton;
+
+import org.gwizard.hibernate.DatabaseConfig;
+import org.gwizard.logging.LoggingConfig;
+import org.gwizard.swagger.SwaggerConfig;
+import org.gwizard.web.WebConfig;
+
 import com.example.app.resource.FunResource;
 import com.example.app.resource.ThingsResource;
 import com.example.app.services.ExampleService;
@@ -7,11 +14,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
+
 import io.dropwizard.jackson.Jackson;
-import org.gwizard.hibernate.DatabaseConfig;
-import org.gwizard.logging.LoggingConfig;
-import org.gwizard.web.WebConfig;
-import javax.inject.Singleton;
 
 /**
  * <p>Among the duties of your application module(s), you must explicitly bind every JAXRS resource class.
@@ -50,4 +54,10 @@ public class ExampleModule extends AbstractModule {
 	public DatabaseConfig databaseConfig(ExampleConfig cfg) {
 		return cfg.getDatabase();
 	}
+
+	@Provides
+	public SwaggerConfig swaggerConfig(ExampleConfig cfg) {
+		return cfg.getSwagger();
+	}
+
 }

@@ -71,6 +71,11 @@
 			<artifactId>gwizard-healthchecks</artifactId>
 			<version>${gwizard.version}</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.gwizard</groupId>
+		    <artifactId>gwizard-swagger</artifactId>
+		    <version>${gwizard.version}</version>
+		</dependency>
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-jackson</artifactId>
