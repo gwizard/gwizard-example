@@ -12,7 +12,11 @@ $ mvn install
 $ java -jar target/gwizard-example-1.0-SNAPSHOT.jar test.yml
 ```
 
-The most exciting endpoint is probably: http://localhost:8081/fun/headers
+The most exciting endpoints are probably: 
+
+* http://localhost:8081/fun/headers
+* http://localhost:8081/swagger.json
+* http://localhost:8081/swagger.yaml
 
 (Note that test.yml changes the port from the default of 8080, just to demonstrate)
 
