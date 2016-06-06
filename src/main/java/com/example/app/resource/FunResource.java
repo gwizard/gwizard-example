@@ -2,6 +2,10 @@ package com.example.app.resource;
 
 import com.codahale.metrics.annotation.Timed;
 import com.example.app.ExampleConfig;
+
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.Data;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -33,6 +37,10 @@ public class FunResource {
 		private final String foo;
 	}
 
+	@ApiOperation(tags={"stuff", "configuration"}, value="Returns some of this application configuration e.g. foo")
+	@ApiResponses(value={
+			@ApiResponse(code=200, message="OK")
+	})
 	@GET
 	public Stuff stuff() {
 		return new Stuff(cfg.getFoo());

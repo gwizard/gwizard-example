@@ -9,6 +9,10 @@
 
 foo: bar
 
+swagger:
+  resourcePackages: 
+  - com.example.app.resource  
+
 web:
   port: 8081
 

@@ -4,6 +4,7 @@ import lombok.Data;
 import org.gwizard.healthchecks.HealthChecksConfig;
 import org.gwizard.hibernate.DatabaseConfig;
 import org.gwizard.logging.LoggingConfig;
+import org.gwizard.swagger.SwaggerConfig;
 import org.gwizard.web.WebConfig;
 
 /**
@@ -23,4 +24,6 @@ public class ExampleConfig {
 	private WebConfig web = new WebConfig();
 	private DatabaseConfig database = new DatabaseConfig();
 	private HealthChecksConfig healthChecks = new HealthChecksConfig();
+	private SwaggerConfig swagger = new SwaggerConfig();
+	
 }
