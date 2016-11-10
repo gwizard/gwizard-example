@@ -18,8 +18,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		if (args.length < 1) {
-			System.err.println("First argument needs to be a yaml config file, doofus");
-			return;
+			args = new String[] {"test.yml"};
 		}
 
 		Injector injector = Guice.createInjector(
