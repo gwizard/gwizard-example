@@ -26,7 +26,7 @@ public class Main {
 				new ExampleModule(),
 				new ConfigModule(new File(args[0]), ExampleConfig.class),
 				new LoggingModule(),
-				new RestModule(),
+				new RestModule("/api"),
 				new HibernateModule(),
 				new MetricsModule(),
 				new HealthChecksModule());
