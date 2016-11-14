@@ -10,6 +10,7 @@
 
 	<properties>
 		<gwizard.version>0.7</gwizard.version>
+		<dropwizard.version>0.8.1</dropwizard.version>
 	</properties>
 
 	<dependencies>
@@ -70,6 +71,11 @@
 			<artifactId>gwizard-healthchecks</artifactId>
 			<version>${gwizard.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-jackson</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
 
 		<!-- This example uses TestNG, but the JUnit code looks almost identical -->
 		<dependency>

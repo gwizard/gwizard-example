@@ -32,7 +32,7 @@ public class ThingsResource {
 		return thing;
 	}
 
-        @Timed
+	@Timed
 	@GET
 	@Transactional
 	public List<Thing> list() {
@@ -42,7 +42,7 @@ public class ThingsResource {
 		return em().createQuery(query).getResultList();
 	}
 
-        @Timed
+	@Timed
 	@GET
 	@Transactional
 	@Path("{thingId}")
