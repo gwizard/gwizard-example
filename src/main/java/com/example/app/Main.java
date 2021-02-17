@@ -21,7 +21,7 @@ public class Main {
 			args = new String[] {"test.yml"};
 		}
 
-		Injector injector = Guice.createInjector(
+		final Injector injector = Guice.createInjector(
 				new ExampleModule(),
 				new ConfigModule(new File(args[0]), ExampleConfig.class),
 				new LoggingModule(),

@@ -8,8 +8,8 @@ import com.google.inject.util.Modules;
 import lombok.extern.slf4j.Slf4j;
 import org.gwizard.hibernate.HibernateModule;
 import org.gwizard.logging.LoggingModule;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.MockitoAnnotations;
-import org.testng.annotations.BeforeMethod;
 
 /**
  * Some common behavior for all tests. Sets up an injector suitable for executing JAXRS resources
@@ -21,8 +21,8 @@ public class TestBase {
 	protected Injector injector;
 
 	/** */
-	@BeforeMethod
-	public void initializeTestBase() {
+	@BeforeEach
+	void initializeTestBase() {
 		MockitoAnnotations.initMocks(this);
 
 		injector = Guice.createInjector(

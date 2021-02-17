@@ -16,17 +16,17 @@ public class Thing {
 
 	/**
 	 * PSA: It's good practice to initialize ids immediately, that way you never have unidentifiable
-	 * entities floating around which screw up Sets and other identity-based collections. Sequences,
-	 * identity columns, and other db-centric id generation strategies are a bad idea.
+	 * entities floating around which screw up Sets and other identity-based collections.
 	 */
 	@Id
-	private UUID id = UUID.randomUUID();
+	private UUID id;
 
 	/** */
 	private String name;
 
 	/** */
 	public Thing(String name) {
+		this.id = UUID.randomUUID();
 		this.name = name;
 	}
 }

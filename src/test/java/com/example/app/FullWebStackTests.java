@@ -6,20 +6,20 @@ import com.google.inject.Module;
 import org.gwizard.rest.RestModule;
 import org.gwizard.services.Run;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
-import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.client.ClientBuilder;
 import java.util.List;
 import java.util.UUID;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasSize;
+
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * <p>This test starts the full web stack and issues real http requests against the target. Compare this against
@@ -37,12 +37,12 @@ public class FullWebStackTests extends TestBase {
 		return new RestModule();
 	}
 
-	@BeforeMethod
+	@BeforeEach
 	public void setUpWebStack() throws Exception {
 		injector.getInstance(Run.class).start();
 	}
 
-	@AfterMethod
+	@AfterEach
 	public void tearDownWebStack() throws Exception {
 		injector.getInstance(Run.class).stop();
 	}
@@ -52,7 +52,7 @@ public class FullWebStackTests extends TestBase {
 	 * it's a good idea to put the interface in the main project and make the resource classes impl the interface.
 	 */
 	@Path("/things")
-	public static interface ThingsClient {
+	public interface ThingsClient {
 		@POST
 		Thing create();
 
@@ -65,7 +65,7 @@ public class FullWebStackTests extends TestBase {
 	}
 
 	private ThingsClient client() {
-		ResteasyClient client = new ResteasyClientBuilder().build();
+		ResteasyClient client = (ResteasyClient)ClientBuilder.newClient();
 		ResteasyWebTarget target = client.target("http://localhost:8080/");
 
 		return target.proxy(ThingsClient.class);
@@ -79,7 +79,7 @@ public class FullWebStackTests extends TestBase {
 
 		Thing fetched = things.get(created.getId());
 
-		assertThat(fetched.getName(), equalTo(created.getName()));
+		assertThat(fetched.getName()).isEqualTo(created.getName());
 	}
 
 	@Test
@@ -90,7 +90,7 @@ public class FullWebStackTests extends TestBase {
 
 		List<Thing> fetched = things.list();
 
-		assertThat(fetched, hasSize(1));
-		assertThat(fetched.get(0).getName(), equalTo(created.getName()));
+		assertThat(fetched).hasSize(1);
+		assertThat(fetched.get(0).getName()).isEqualTo(created.getName());
 	}
 }

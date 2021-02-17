@@ -14,7 +14,7 @@ import javax.inject.Inject;
 public class ExampleService extends AbstractIdleService {
 
     @Inject
-    public ExampleService(Services services) {
+    public ExampleService(final Services services) {
         services.add(this);
     }
 

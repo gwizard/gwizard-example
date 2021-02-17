@@ -3,6 +3,8 @@ package com.example.app.resource;
 import com.codahale.metrics.annotation.Timed;
 import com.example.app.ExampleConfig;
 import lombok.Data;
+import lombok.Value;
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -23,14 +25,14 @@ public class FunResource {
 	private final HttpHeaders headers;
 
 	@Inject
-	public FunResource(ExampleConfig cfg, HttpHeaders headers) {
+	public FunResource(final ExampleConfig cfg, final HttpHeaders headers) {
 		this.cfg = cfg;
 		this.headers = headers;
 	}
 
-	@Data
+	@Value
 	public static class Stuff {
-		private final String foo;
+		String foo;
 	}
 
 	@GET
