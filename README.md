@@ -19,4 +19,4 @@ The most exciting endpoint is probably: http://localhost:8081/api/fun/headers
 ## GWizard
 
 For more information about GWizard:
-https://github.com/stickfigure/gwizard
+https://github.com/gwizard/gwizard
