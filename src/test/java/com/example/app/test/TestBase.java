@@ -32,6 +32,8 @@ public class TestBase {
 					new ExampleModule(),
 					new TestModule())
 						.with(overrideModule()));
+
+		injector.injectMembers(this);
 	}
 
 	/** Override this method in a test class if you want special guice behavior */
