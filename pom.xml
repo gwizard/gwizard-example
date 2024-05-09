@@ -9,16 +9,21 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
-		<gwizard.version>0.11</gwizard.version>
-		<dropwizard.version>2.0.19</dropwizard.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>org.gwizard</groupId>
+				<artifactId>gwizard-bom</artifactId>
+				<version>1.0-rc1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
 				<groupId>org.junit</groupId>
 				<artifactId>junit-bom</artifactId>
-				<version>5.7.1</version>
+				<version>5.10.2</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -30,7 +35,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.16</version>
+			<version>1.18.30</version>
 			<scope>provided</scope> <!-- only needed at build time -->
 		</dependency>
 
@@ -38,7 +43,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>1.4.200</version>
+			<version>2.1.214</version>
 		</dependency>
 
 		<!--
@@ -51,43 +56,31 @@
 		<dependency>
 			<groupId>org.gwizard</groupId>
 			<artifactId>gwizard-config</artifactId>
-			<version>${gwizard.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gwizard</groupId>
 			<artifactId>gwizard-logging</artifactId>
-			<version>${gwizard.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gwizard</groupId>
 			<artifactId>gwizard-rest</artifactId>
-			<version>${gwizard.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gwizard</groupId>
 			<artifactId>gwizard-services</artifactId>
-			<version>${gwizard.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gwizard</groupId>
 			<artifactId>gwizard-hibernate</artifactId>
-			<version>${gwizard.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gwizard</groupId>
 			<artifactId>gwizard-metrics</artifactId>
-			<version>${gwizard.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gwizard</groupId>
 			<artifactId>gwizard-healthchecks</artifactId>
-			<version>${gwizard.version}</version>
 		</dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.dropwizard</groupId>-->
-<!--            <artifactId>dropwizard-jackson</artifactId>-->
-<!--            <version>${dropwizard.version}</version>-->
-<!--        </dependency>-->
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -104,21 +97,20 @@
 		<dependency>
 			<groupId>com.google.truth</groupId>
 			<artifactId>truth</artifactId>
-			<version>1.1.2</version>
+			<version>1.1.5</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>3.2.4</version>
+			<version>5.8.0</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-client</artifactId>
-			<version>4.6.0.Final</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -128,16 +120,16 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.12.1</version>
 				<configuration>
-					<release>11</release>
+					<release>17</release>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.1.1</version>
+				<version>3.3.0</version>
 				<configuration>
 					<archive>
 						<manifest>
@@ -149,7 +141,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>2.3</version>
+				<version>3.5.1</version>
 				<configuration>
 					<createDependencyReducedPom>true</createDependencyReducedPom>
 					<filters>
@@ -183,7 +175,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
+				<version>3.2.5</version>
 			</plugin>
 		</plugins>
 	</build>

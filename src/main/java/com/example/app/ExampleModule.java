@@ -11,11 +11,11 @@ import io.dropwizard.jackson.Jackson;
 import org.gwizard.hibernate.DatabaseConfig;
 import org.gwizard.logging.LoggingConfig;
 import org.gwizard.web.WebConfig;
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 /**
  * <p>Among the duties of your application module(s), you must explicitly bind every JAXRS resource class.
- * Consider using Reflections to do this automatically.</p>
+ * If you aren't sensitive to app start time, consider using Reflections to do this automatically.</p>
  *
  * <p>We must provide bindings for the LoggingConfig, WebConfig, and DatabaseConfig to use the
  * logging, rest, and hibernate modules.</p>

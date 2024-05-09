@@ -33,8 +33,6 @@ logging:
             </encoder>
         </appender>
 
-        <logger name="org.hibernate" level="info"/>
-
         <root level="info">
             <appender-ref ref="console"/>
         </root>

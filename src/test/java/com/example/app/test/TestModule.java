@@ -5,9 +5,9 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import lombok.extern.slf4j.Slf4j;
 import org.jboss.resteasy.specimpl.ResteasyHttpHeaders;
-import javax.inject.Singleton;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.MultivaluedHashMap;
+import jakarta.inject.Singleton;
+import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.MultivaluedHashMap;
 
 /**
  */
