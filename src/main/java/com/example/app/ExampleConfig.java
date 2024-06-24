@@ -2,9 +2,13 @@ package com.example.app;
 
 import lombok.Data;
 import org.gwizard.healthchecks.HealthChecksConfig;
+import org.gwizard.healthchecks.HealthChecksConfigProperties;
 import org.gwizard.hibernate.DatabaseConfig;
+import org.gwizard.hibernate.DatabaseConfigProperties;
 import org.gwizard.logging.LoggingConfig;
+import org.gwizard.logging.LoggingConfigProperties;
 import org.gwizard.web.WebConfig;
+import org.gwizard.web.WebConfigProperties;
 
 /**
  * Your configuration class can be any POJO, and there's nothing special about
@@ -19,8 +23,8 @@ public class ExampleConfig {
 	private String foo;
 
 	/** Some standard bits of configuration */
-	private LoggingConfig logging = new LoggingConfig();
-	private WebConfig web = new WebConfig();
-	private DatabaseConfig database = new DatabaseConfig();
-	private HealthChecksConfig healthChecks = new HealthChecksConfig();
+	private LoggingConfigProperties logging = new LoggingConfigProperties();
+	private WebConfigProperties web = new WebConfigProperties();
+	private DatabaseConfigProperties database = new DatabaseConfigProperties();
+	private HealthChecksConfigProperties healthChecks = new HealthChecksConfigProperties();
 }

@@ -8,6 +8,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import io.dropwizard.jackson.Jackson;
+import org.gwizard.healthchecks.HealthChecksConfig;
+import org.gwizard.healthchecks.HealthChecksConfigProperties;
 import org.gwizard.hibernate.DatabaseConfig;
 import org.gwizard.logging.LoggingConfig;
 import org.gwizard.web.WebConfig;
@@ -37,17 +39,22 @@ public class ExampleModule extends AbstractModule {
 	}
 
 	@Provides
-	public LoggingConfig loggingConfig(ExampleConfig cfg) {
+	public LoggingConfig loggingConfig(final ExampleConfig cfg) {
 		return cfg.getLogging();
 	}
 
 	@Provides
-	public WebConfig webConfig(ExampleConfig cfg) {
+	public WebConfig webConfig(final ExampleConfig cfg) {
 		return cfg.getWeb();
 	}
 
 	@Provides
-	public DatabaseConfig databaseConfig(ExampleConfig cfg) {
+	public DatabaseConfig databaseConfig(final ExampleConfig cfg) {
 		return cfg.getDatabase();
+	}
+
+	@Provides
+	public HealthChecksConfig healthChecksConfig(final ExampleConfig cfg) {
+		return cfg.getHealthChecks();
 	}
 }

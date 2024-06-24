@@ -24,13 +24,12 @@ public class TestModule extends AbstractModule {
 	@Provides
 	@Singleton
 	public ExampleConfig exampleConfig() {
-		ExampleConfig cfg = new ExampleConfig();
+		final ExampleConfig cfg = new ExampleConfig();
 		cfg.getDatabase().setDriverClass("org.h2.Driver");
 		cfg.getDatabase().setUser("sa");
 		cfg.getDatabase().setUrl("jdbc:h2:mem:test");
 		cfg.getDatabase().getProperties().put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 		cfg.getDatabase().getProperties().put("hibernate.hbm2ddl.auto", "create");
-
 		return cfg;
 	}
 }
