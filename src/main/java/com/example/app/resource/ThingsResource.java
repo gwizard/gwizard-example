@@ -1,8 +1,8 @@
 package com.example.app.resource;
 
-import com.codahale.metrics.annotation.Timed;
 import com.example.app.entity.Thing;
 import com.google.inject.persist.Transactional;
+import io.micrometer.core.annotation.Timed;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -32,7 +32,7 @@ public class ThingsResource {
 		return thing;
 	}
 
-	@Timed
+	@Timed("example.things.list")
 	@GET
 	@Transactional
 	public List<Thing> list() {
@@ -42,7 +42,7 @@ public class ThingsResource {
 		return em().createQuery(query).getResultList();
 	}
 
-	@Timed
+	@Timed("example.things.get")
 	@GET
 	@Transactional
 	@Path("{thingId}")

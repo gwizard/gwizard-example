@@ -5,11 +5,12 @@ import com.example.app.resource.ThingsResource;
 import com.example.app.services.ExampleService;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import io.dropwizard.jackson.Jackson;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import org.gwizard.healthchecks.HealthChecksConfig;
-import org.gwizard.healthchecks.HealthChecksConfigProperties;
 import org.gwizard.hibernate.DatabaseConfig;
 import org.gwizard.logging.LoggingConfig;
 import org.gwizard.web.WebConfig;
@@ -28,6 +29,9 @@ public class ExampleModule extends AbstractModule {
 		bind(FunResource.class);
 		bind(ThingsResource.class);
 
+		// This demo keeps metrics in memory. Applications can bind their chosen publishing registry instead.
+		bind(MeterRegistry.class).to(SimpleMeterRegistry.class).in(Singleton.class);
+
 		bind(ExampleService.class).asEagerSingleton();
 	}
 
@@ -35,7 +39,10 @@ public class ExampleModule extends AbstractModule {
 	@Provides
 	@Singleton
 	public ObjectMapper objectMapper() {
-		return Jackson.newObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+		return JsonMapper.builder()
+				.findAndAddModules()
+				.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+				.build();
 	}
 
 	@Provides

@@ -1,13 +1,9 @@
 package com.example.app;
 
 import lombok.Data;
-import org.gwizard.healthchecks.HealthChecksConfig;
 import org.gwizard.healthchecks.HealthChecksConfigProperties;
-import org.gwizard.hibernate.DatabaseConfig;
 import org.gwizard.hibernate.DatabaseConfigProperties;
-import org.gwizard.logging.LoggingConfig;
 import org.gwizard.logging.LoggingConfigProperties;
-import org.gwizard.web.WebConfig;
 import org.gwizard.web.WebConfigProperties;
 
 /**

@@ -3,8 +3,8 @@ package com.example.app;
 import com.example.app.entity.Thing;
 import com.example.app.test.TestBase;
 import com.google.inject.Module;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.gwizard.rest.RestModule;
-import org.gwizard.services.Run;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.junit.jupiter.api.AfterEach;
@@ -30,21 +30,24 @@ import static com.google.common.truth.Truth.assertThat;
  * very quickly. However, you may wish to throw in a few web stack tests anyways.</p>
  */
 public class FullWebStackTests extends TestBase {
+	private ResteasyClient httpClient;
 
 	/** We need to get the RestModule included if we want the web stack to run */
 	@Override
 	protected Module overrideModule() {
-		return new RestModule();
+		return new RestModule("/api");
 	}
 
 	@BeforeEach
-	public void setUpWebStack() throws Exception {
-		injector.getInstance(Run.class).start();
+	public void setUpClient() {
+		httpClient = (ResteasyClient)ClientBuilder.newClient();
 	}
 
 	@AfterEach
-	public void tearDownWebStack() throws Exception {
-		injector.getInstance(Run.class).stop();
+	public void closeClient() {
+		if (httpClient != null) {
+			httpClient.close();
+		}
 	}
 
 	/**
@@ -65,8 +68,7 @@ public class FullWebStackTests extends TestBase {
 	}
 
 	private ThingsClient client() {
-		ResteasyClient client = (ResteasyClient)ClientBuilder.newClient();
-		ResteasyWebTarget target = client.target("http://localhost:8080/");
+		ResteasyWebTarget target = httpClient.target("http://localhost:8080/api");
 
 		return target.proxy(ThingsClient.class);
 	}
@@ -80,6 +82,7 @@ public class FullWebStackTests extends TestBase {
 		Thing fetched = things.get(created.getId());
 
 		assertThat(fetched.getName()).isEqualTo(created.getName());
+		assertThat(instance(MeterRegistry.class).get("example.things.get").timer().count()).isEqualTo(1L);
 	}
 
 	@Test
@@ -92,5 +95,6 @@ public class FullWebStackTests extends TestBase {
 
 		assertThat(fetched).hasSize(1);
 		assertThat(fetched.get(0).getName()).isEqualTo(created.getName());
+		assertThat(instance(MeterRegistry.class).get("example.things.list").timer().count()).isEqualTo(1L);
 	}
 }

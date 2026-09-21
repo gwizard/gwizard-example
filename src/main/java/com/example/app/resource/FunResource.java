@@ -1,8 +1,7 @@
 package com.example.app.resource;
 
-import com.codahale.metrics.annotation.Timed;
 import com.example.app.ExampleConfig;
-import lombok.Data;
+import io.micrometer.core.annotation.Timed;
 import lombok.Value;
 
 import jakarta.inject.Inject;
@@ -40,7 +39,7 @@ public class FunResource {
 		return new Stuff(cfg.getFoo());
 	}
 
-	@Timed
+	@Timed("example.fun.headers")
 	@GET
 	@Path("/headers")
 	public HttpHeaders headers() {

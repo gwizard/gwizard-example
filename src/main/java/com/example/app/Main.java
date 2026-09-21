@@ -23,7 +23,7 @@ public class Main {
 
 		final Injector injector = Guice.createInjector(
 				new ExampleModule(),
-				new ConfigModule(new File(args[0]), ExampleConfig.class),
+				new ConfigModule<>(ExampleConfig.class, new File(args[0])),
 				new LoggingModule(),
 				new RestModule("/api"),
 				new HibernateModule(),

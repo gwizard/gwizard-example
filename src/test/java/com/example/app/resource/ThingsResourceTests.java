@@ -2,6 +2,7 @@ package com.example.app.resource;
 
 import com.example.app.entity.Thing;
 import com.example.app.test.TestBase;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class ThingsResourceTests extends TestBase {
 		final Thing fetched = instance(ThingsResource.class).get(created.getId());
 
 		assertThat(fetched.getName()).isEqualTo(created.getName());
+		assertThat(instance(MeterRegistry.class).get("example.things.get").timer().count()).isEqualTo(1L);
 	}
 
 	@Test
@@ -33,5 +35,6 @@ public class ThingsResourceTests extends TestBase {
 
 		assertThat(fetched).hasSize(1);
 		assertThat(fetched.get(0).getName()).isEqualTo(created.getName());
+		assertThat(instance(MeterRegistry.class).get("example.things.list").timer().count()).isEqualTo(1L);
 	}
 }
